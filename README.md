@@ -1,6 +1,6 @@
 # Meiling API Application Template: Version 0
 This repository is built for kickstarting your meiling api based on typescript with eslint in no time!  
-**This template repository is for creating API Endpoints (which provides information based on access _oken)**
+**This template repository is for creating API Endpoints (which provides information based on access_token)**
 
 ## GitHub Actions Status
 **Warning :** Make sure you change this badge locations and names before you use it on your repository!  
