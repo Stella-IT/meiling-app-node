@@ -11,7 +11,7 @@ function handleAxiosError(e: any) {
   }
 }
 
-async function getUser(accessToken: string) {
+export async function getUser(accessToken: string) {
   try {
     const data = await axios.get(config.meiling.hostname + '/v1/oauth2/userinfo', {
       headers: {
@@ -26,20 +26,32 @@ async function getUser(accessToken: string) {
   }
 }
 
-async function validateToken(accessToken: string, permissions: string[]) {
+export async function getToken(accessToken: string): Promise<MeilingV1OAuthAccessTokenInfo | undefined> {
   try {
-    const data = await axios.get(config.meiling.hostname + '/v1/oauth2/tokeninfo?access_token=' + accessToken);
+    const data = await axios.get(config.meiling.hostname + '/v1/oauth2/tokeninfo', {
+      params: {
+        access_token: accessToken,
+      },
+    });
     const tokenInfo = data.data as MeilingV1OAuthAccessTokenInfo;
-    const scopes = tokenInfo.scope.split(' ');
 
-    for (const permission of permissions) {
-      if (!scopes.includes(permission)) {
-        return false;
-      }
-    }
-
-    return true;
+    return tokenInfo;
   } catch (e) {
-    return false;
+    return;
   }
+}
+
+export async function validateToken(accessToken: string, permissions: string[]) {
+  const tokenInfo = await getToken(accessToken);
+  if (!tokenInfo) return;
+
+  const scopes = tokenInfo.scope.split(' ');
+
+  for (const permission of permissions) {
+    if (!scopes.includes(permission)) {
+      return false;
+    }
+  }
+
+  return true;
 }
