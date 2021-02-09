@@ -1,5 +1,5 @@
 interface Config {
   meiling: {
-    endpoint: string;
+    hostname: string;
   };
 }

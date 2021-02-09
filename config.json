@@ -1,5 +1,5 @@
 {
   "meiling": {
-    "endpoint": "https://meiling.stella-api.dev"
+    "hostname": "https://meiling.stella-api.dev"
   }
 }
