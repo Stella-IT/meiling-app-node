@@ -1,11 +1,11 @@
 {
-  "name": "typescript-kickstart",
+  "name": "meiling-app-devenv-v0",
   "version": "0.0.1",
-  "description": "A Kickstarter Repository for Typescript",
+  "description": "A Repository for creating meiling api apps",
   "main": "dist/",
-  "repository": "https://github.com/Alex4386/typescript-kickstart",
+  "repository": "https://github.com/Stella-IT/meiling-app-devenv-v0",
   "author": "Alex4386 <psh010209@gmail.com>",
-  "license": "MIT",
+  "license": "WTFPL",
   "dependencies": {
     "axios": "^0.21.1",
     "prisma": "^2.16.1",
