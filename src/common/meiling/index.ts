@@ -13,7 +13,7 @@ function handleAxiosError(e: any) {
 
 async function getUser(accessToken: string) {
   try {
-    const data = await axios.get(config.meilingEndpoint + '/v1/oauth2/userinfo', {
+    const data = await axios.get(config.meiling.hostname + '/v1/oauth2/userinfo', {
       headers: {
         Authorization: 'Bearer ' + accessToken,
       },
@@ -28,7 +28,7 @@ async function getUser(accessToken: string) {
 
 async function validateToken(accessToken: string, permissions: string[]) {
   try {
-    const data = await axios.get(config.meilingEndpoint + '/v1/oauth2/tokeninfo?access_token=' + accessToken);
+    const data = await axios.get(config.meiling.hostname + '/v1/oauth2/tokeninfo?access_token=' + accessToken);
     const tokenInfo = data.data as MeilingV1OAuthAccessTokenInfo;
     const scopes = tokenInfo.scope.split(' ');
 
