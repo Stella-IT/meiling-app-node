@@ -30,8 +30,10 @@ async function validateToken(accessToken: string, permissions: string[]) {
   try {
     const data = await axios.get(config.meilingEndpoint + '/v1/oauth2/tokeninfo?access_token=' + accessToken);
     const tokenInfo = data.data as MeilingV1OAuthAccessTokenInfo;
+    const scopes = tokenInfo.scope.split(' ');
+
     for (const permission of permissions) {
-      if (!tokenInfo.scope.includes(permission)) {
+      if (!scopes.includes(permission)) {
         return false;
       }
     }
