@@ -1,3 +1,5 @@
 interface Config {
-  meilingEndpoint: string;
+  meiling: {
+    endpoint: string;
+  };
 }
